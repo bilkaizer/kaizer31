@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio & Bisnis Saya</title>
+    <!-- Link FontAwesome untuk Ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Link Google Fonts (Inter & Playfair Display) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- RESET & VARIABLES --- */
+        :root {
+            --bg-color: #ffffff;
+            --text-main: #111111;
+            --text-sub: #666666;
+            --accent: #000000;
+            --card-bg: rgba(255, 255, 255, 0.7);
+            --shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+            --border: rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(200, 200, 200, 0.3) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(220, 220, 220, 0.3) 0px, transparent 50%);
+            color: var(--text-main);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+        }
+
+        /* Decorate circle blur di belakang */
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(45deg, #f3f4f6, #e5e7eb);
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -1;
+            top: 10%;
+        }
+
+        .profile-img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 25px;
+            border: 3px solid var(--text-main);
+            background-color: #eee;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+            color: var(--text-main);
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            color: var(--text-sub);
+            font-weight: 400;
+            max-width: 500px;
+            margin-bottom: 30px;
+        }
+
+        /* --- MAIN CONTAINER --- */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px 60px;
+        }
+
+        /* --- CARD (Glassmorphism) --- */
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+            text-align: center;
+            letter-spacing: -0.5px;
+            position: relative;
+        }
+
+        /* --- SOSIAL GRID --- */
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            padding: 18px 25px;
+            border-radius: 16px;
+            text-decoration: none;
+            color: var(--text-main);
+            background: #fff;
+            border: 1px solid var(--border);
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .social-btn i {
+            font-size: 1.4rem;
+            margin-right: 15px;
+            width: 25px;
+            text-align: center;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+            border-color: var(--text-main);
+        }
+
+        /* Warna Hover Button */
+        .wa:hover { background: #25D366; color: white; border-color: #25D366; }
+        .wa:hover i { color: white; }
+        
+        .ig:hover { background: #E1306C; color: white; border-color: #E1306C; }
+        .ig:hover i { color: white; }
+        
+        .tt:hover { background: #000000; color: white; border-color: #000000; }
+        .tt:hover i { color: white; }
+        
+        .email:hover { background: var(--text-main); color: white; border-color: var(--text-main); }
+        .email:hover i { color: white; }
+
+        /* --- TENTANG SAYA --- */
+        .about-text {
+            text-align: center;
+            font-size: 1rem;
+            color: var(--text-sub);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* --- DESAIN SERVICES/JASA --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .service-item {
+            padding: 25px;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            text-align: center;
+            background: #fafafa;
+            transition: 0.3s;
+        }
+
+        .service-item:hover {
+            border-color: var(--text-main);
+            background: #fff;
+        }
+
+        .service-item i {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--text-main);
+        }
+
+        .service-item h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .service-item p {
+            font-size: 0.9rem;
+            color: var(--text-sub);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 40px;
+            font-size: 0.85rem;
+            color: #999;
+            border-top: 1px solid var(--border);
+            background: #fafafa;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            .card { padding: 25px; }
+            .container { padding: 0 15px 40px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <!-- Ganti URL Foto Profil Ici -->
+        <img src="https://via.placeholder.com/200" alt="Foto Profil" class="profile-img">
+        
+        <!-- Ganti Nama Anda -->
+        <h1>Bilvan Kaizer</h1>
+        
+        <!-- Ganti Tagline / Pekerjaan -->
+        <p class="tagline">Visual Designer & Creative Director</p>
+
+        <!-- Sosialmini Link Langsung di Hero (Biar Praktis) -->
+        <div class="social-grid" style="max-width: 600px; margin: 0 auto;">
+            <a href="https://wa.me/6281299962424" class="social-btn wa">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+            </a>
+            <a href="mailto:thebilvan@gmail.com" class="social-btn email">
+                <i class="far fa-envelope"></i> Email
+            </a>
+        </div>
+    </section>
+
+    <!-- KONTEN UTAMA -->
+    <div class="container">
+        
+        <!-- TENTANG SAYA -->
+        <div class="card">
+            <h2>About</h2>
+            <p class="about-text">
+                Saya adalah desainer dengan pengalaman lebih dari 5 tahun di industri kreatif. 
+                Fokus saya adalah membantu brand-bisnis kecil hingga menengah untuk memiliki identitas visual yang kuat dan profesional.
+            </p>
+        </div>
+
+        <!-- JASA / LAYANAN -->
+        <div class="card">
+            <h2>Services</h2>
+            <div class="services-grid">
+                <div class="service-item">
+                    <i class="fas fa-pen-nib"></i>
+                    <h3>Logo Design</h3>
+                    <p>Pembuatan identitas visual logo yang memorable.</p>
+                </div>
+                <div class="service-item">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>Web Design</h3>
+                    <p>Desain interface website yang modern & responsif.</p>
+                </div>
+                <div class="service-item">
+                    <i class="fas fa-bullhorn"></i>
+                    <h3>Social Media</h3>
+                    <p>Konten visual untuk Ig, Tiktok, dan platform lain.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SOCIAL MEDIA UTAMA -->
+        <div class="card">
+            <h2>Connect With Me</h2>
+            <p style="text-align:center; margin-bottom:20px; color:#666;">Follow saya di platform social media pilihan Anda:</p>
+            <div class="social-grid">
+                
+                <!-- INSTAGRAM -->
+                <a href="https://instagram.com/b.kaizer31" class="social-btn ig" style="text-decoration: none;">
+                    <i class="fab fa-instagram"></i> Instagram
+                </a>
+
+                <!-- TIKTOK -->
+                <a href="https://tiktok.com/@username_anda" class="social-btn tt">
+                    <i class="fab fa-tiktok"></i> TikTok
+                </a>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2020 Bilvan Kaizer Design. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
